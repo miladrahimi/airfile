@@ -108,7 +108,7 @@
 
             request.done(function (response) {
                 alert.html([
-                    'File Name: ' + response['name'],
+                    'File Name: ' + `<code>${response['name']}</code>`,
                     'File URL: ' + `<a href="${response['url']}" target="_blank">${response['url']}<a>`,
                 ].join('<br>'))
                 me.val('').prop('disabled', false)
