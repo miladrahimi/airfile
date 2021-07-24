@@ -9,7 +9,7 @@ function path(string $name): string
 
 function url(string $name): string
 {
-    return ($_ENV['URL'] ?? '') . '/n/' . $name;
+    return ($_ENV['URL'] ?? '') . '/f/' . $name;
 }
 
 if (isset($_FILES['file'])) {

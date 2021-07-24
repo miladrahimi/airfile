@@ -109,7 +109,7 @@
             request.done(function (response) {
                 alert.html([
                     'File Name: ' + response['name'],
-                    'File URL: ' + `<a href="${response['url']}">${response['url']}<a>`,
+                    'File URL: ' + `<a href="${response['url']}" target="_blank">${response['url']}<a>`,
                 ].join('<br>'))
                 me.val('').prop('disabled', false)
             })
@@ -130,7 +130,7 @@
             let request = $.ajax({url: 'process.php', type: 'get', data: {'name': name}})
 
             request.done(function (response) {
-                alert.html(`<a href="${response['url']}">${response['url']}<a>`)
+                alert.html(`<a href="${response['url']}" target="_blank">${response['url']}<a>`)
             })
 
             request.fail(function (jqXHR, textStatus, errorThrown) {
