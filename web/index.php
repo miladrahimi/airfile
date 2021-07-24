@@ -91,7 +91,7 @@
             let alert = $('#upload-alert')
 
             me.prop('disabled', true)
-            alert.html('Saving...')
+            alert.html('Uploading...')
 
 
             const formData = new FormData()
