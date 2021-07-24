@@ -26,35 +26,35 @@
 
             <ul class="nav nav-tabs mt-5" id="tabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="save-tab" data-bs-toggle="tab" data-bs-target="#save"
-                            type="button" role="tab" aria-controls="save" aria-selected="true">Save
+                    <button class="nav-link active" id="upload-tab" data-bs-toggle="tab" data-bs-target="#upload"
+                            type="button" role="tab" aria-controls="upload" aria-selected="true">Upload
                     </button>
                 </li>
                 <li class="nav-item flex-fill" role="presentation">
-                    <button class="nav-link" id="load-tab" data-bs-toggle="tab" data-bs-target="#load"
-                            type="button" role="tab" aria-controls="load" aria-selected="false">Load
+                    <button class="nav-link" id="download-tab" data-bs-toggle="tab" data-bs-target="#download"
+                            type="button" role="tab" aria-controls="download" aria-selected="false">Download
                     </button>
                 </li>
             </ul>
 
             <div class="tab-content" id="tabsContent">
-                <div class="tab-pane fade show active" id="save" role="tabpanel" aria-labelledby="save-tab">
+                <div class="tab-pane fade show active" id="upload" role="tabpanel" aria-labelledby="upload-tab">
                     <div class="card bg-light text-left border-top-0 rounded-0 rounded-bottom">
                         <div class="card-body d-flex flex-column gap-2">
-                            <div class="alert alert-dark m-0 text-start" id="save-alert">
-                                Choose the file to save...
+                            <div class="alert alert-dark m-0 text-start" id="upload-alert">
+                                Choose the file to upload...
                             </div>
-                            <input type="file" class="form-control" id="save-file">
+                            <input type="file" class="form-control" id="upload-file">
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="load" role="tabpanel" aria-labelledby="load-tab">
+                <div class="tab-pane fade" id="download" role="tabpanel" aria-labelledby="download-tab">
                     <div class="card bg-light text-left border-top-0 rounded-0 rounded-bottom">
                         <div class="card-body d-flex flex-column gap-2">
-                            <input type="text" id="load-name" placeholder="File Name" title="File Name"
+                            <input type="text" id="download-name" placeholder="File Name" title="File Name"
                                    class="form-control">
-                            <div class="alert alert-dark m-0 text-start" id="load-alert">
-                                Enter file name to get the download URL.
+                            <div class="alert alert-dark m-0 text-start" id="download-alert">
+                                Enter file name to fetch the download link.
                             </div>
                         </div>
                     </div>
@@ -85,10 +85,10 @@
             })
         })
 
-        // Save (Button)
-        $('#save-file').change(function () {
+        // Upload (Button)
+        $('#upload-file').change(function () {
             let me = $(this)
-            let alert = $('#save-alert')
+            let alert = $('#upload-alert')
 
             me.prop('disabled', true)
             alert.html('Saving...')
@@ -116,16 +116,16 @@
 
             request.fail(function (jqXHR, textStatus, errorThrown) {
                 console.error(jqXHR, textStatus, errorThrown)
-                alert.html('Failed to save :(')
+                alert.html('Failed to upload :(')
                 me.prop('disabled', false)
             })
         })
 
-        // Load
-        $('#load-name').bind('input', function () {
+        // Download
+        $('#download-name').bind('input', function () {
             let name = $(this).val()
-            let alert = $('#load-alert')
-            alert.html('Loading...')
+            let alert = $('#download-alert')
+            alert.html('Downloading...')
 
             let request = $.ajax({url: 'process.php', type: 'get', data: {'name': name}})
 
@@ -138,7 +138,7 @@
                     alert.html('ERROR: File not found :(')
                 } else {
                     console.error(jqXHR, textStatus, errorThrown)
-                    alert.html('ERROR: Failed to load the file URL :(')
+                    alert.html('ERROR: Failed to download the file URL :(')
                 }
             })
         })
