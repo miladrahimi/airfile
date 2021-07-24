@@ -1,7 +1,7 @@
 # AirFile
 An online clipboard to share files!
 
-## Online Version
+## Demo
 [https://airfile.herokuapp.com](https://airfile.herokuapp.com)
 
 ## License
